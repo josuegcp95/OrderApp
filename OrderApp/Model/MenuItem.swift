@@ -23,5 +23,4 @@ struct MenuItem: Codable {
         case category
         case imageURL = "image_url"
     }
-    
 }

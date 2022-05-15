@@ -8,7 +8,7 @@
 import Foundation
 
 struct Order: Codable {
-    let menuItems: [MenuItem]
+    var menuItems: [MenuItem]
     
     init(menuItems: [MenuItem] = []){
         self.menuItems = menuItems

@@ -63,7 +63,7 @@ class MenuTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        menuItems.count
+        return menuItems.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,5 +79,4 @@ class MenuTableViewController: UITableViewController {
         content.secondaryText = menuItem.price.formatted(.currency(code: "usd"))
         cell.contentConfiguration = content
     }
-    
 }

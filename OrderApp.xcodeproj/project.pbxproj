@@ -20,6 +20,7 @@
 		33186376282F1046006A1CE7 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33186375282F1046006A1CE7 /* ResponseModels.swift */; };
 		33186378282F1135006A1CE7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33186377282F1135006A1CE7 /* Order.swift */; };
 		3318637A282F12AA006A1CE7 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33186379282F12AA006A1CE7 /* MenuController.swift */; };
+		3318637C28317FC8006A1CE7 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318637B28317FC8006A1CE7 /* OrderConfirmationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		33186375282F1046006A1CE7 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 		33186377282F1135006A1CE7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		33186379282F12AA006A1CE7 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		3318637B28317FC8006A1CE7 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				3318636D282EEB77006A1CE7 /* MenuTableViewController.swift */,
 				33186371282EEF09006A1CE7 /* MenuItemDetailViewController.swift */,
 				3318636F282EEB81006A1CE7 /* OrderTableViewController.swift */,
+				3318637B28317FC8006A1CE7 /* OrderConfirmationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				33186370282EEB81006A1CE7 /* OrderTableViewController.swift in Sources */,
 				33186354282DD819006A1CE7 /* AppDelegate.swift in Sources */,
 				33186356282DD819006A1CE7 /* SceneDelegate.swift in Sources */,
+				3318637C28317FC8006A1CE7 /* OrderConfirmationViewController.swift in Sources */,
 				3318636C282EEB46006A1CE7 /* CategoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

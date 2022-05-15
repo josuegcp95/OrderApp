@@ -51,7 +51,7 @@ class CategoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categories.count
+        return categories.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,5 +66,4 @@ class CategoryTableViewController: UITableViewController {
         content.text = category.capitalized
         cell.contentConfiguration = content
     }
-
 }
