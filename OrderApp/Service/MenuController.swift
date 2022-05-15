@@ -28,7 +28,7 @@ class MenuController {
     
     let baseURL = URL(string: "http://localhost:8080/")!
     
-    // FetchCategories
+    // FETCH CATEGORIES
     func fetchCategories() async throws -> [String] {
         let categoriesURL = baseURL.appendingPathComponent("categories")
         let (data, response) = try await URLSession.shared.data(from: categoriesURL)
@@ -43,7 +43,7 @@ class MenuController {
         return categoriesResponse.categories
     }
     
-    // fetchMenuItems
+    // FETCH MENUI TEMS
     func fetchMenuItems(forCategory categoryName: String) async throws -> [MenuItem] {
         let baseMenuURL = baseURL.appendingPathComponent("menu")
         var components = URLComponents(url: baseMenuURL, resolvingAgainstBaseURL: true)!
@@ -61,14 +61,14 @@ class MenuController {
         return menuResponse.items
     }
     
-    // submitOrder
+    // SUBMIT ORDER
     func submitOrder(forMenuIDs menuIDs: [Int]) async throws -> MinutesToPrepare {
         let orderURL = baseURL.appendingPathComponent("order")
         var request = URLRequest(url: orderURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let menuIdsDict = ["menuIDs": menuIDs]
+        let menuIdsDict = ["menuIds": menuIDs]
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(menuIdsDict)
         request.httpBody = jsonData

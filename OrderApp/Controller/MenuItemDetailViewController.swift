@@ -8,6 +8,7 @@
 import UIKit
 
 class MenuItemDetailViewController: UIViewController {
+    
     var menuItem: MenuItem
     
     @IBOutlet weak var imageView: UIImageView!

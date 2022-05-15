@@ -8,6 +8,7 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    
     let category: String
     var menuItems = [MenuItem]()
     
@@ -48,7 +49,7 @@ class MenuTableViewController: UITableViewController {
         self.present(alert, animated: true)
     }
     
-    // Show Menu Item
+    // SHOW MENU ITEMS
     @IBSegueAction func showMenuItem(_ coder: NSCoder, sender: Any?) -> MenuItemDetailViewController? {
         guard let cell = sender as? UITableViewCell, let indexpath = tableView.indexPath(for: cell) else {
             return nil }
@@ -57,7 +58,7 @@ class MenuTableViewController: UITableViewController {
         return MenuItemDetailViewController(coder: coder, menuItem: menuItem)
     }
     
-    // TableView Methods
+    // TABLE VIEW METHODS
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -212,7 +212,18 @@
                             <outlet property="delegate" destination="zGr-Z0-jIY" id="XTY-NW-aG6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Items" id="3bI-BZ-jcL"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Your Items" id="3bI-BZ-jcL">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" style="plain" id="b2Q-Po-pL0">
+                            <connections>
+                                <action selector="submitTapped:" destination="zGr-Z0-jIY" id="oYg-0k-yXn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="bkF-BX-4QZ" kind="presentation" identifier="confirmOrder" destinationCreationSelector="confirmOrder:" id="czy-C6-i0N"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eU-lH-TwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,15 +234,51 @@
             <objects>
                 <viewController id="bkF-BX-4QZ" customClass="OrderConfirmationViewController" customModule="OrderApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J8O-HE-hfb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your order! Your wait time is approximately 15 minutes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxl-lg-2uG">
+                                <rect key="frame" x="45" y="239" width="300" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="WTr-uX-yfc"/>
+                                    <constraint firstAttribute="height" constant="200" id="Yab-Ll-Csx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vm-mo-Thf">
+                                <rect key="frame" x="122" y="447" width="147" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="0mC-7O-evs"/>
+                                    <constraint firstAttribute="width" constant="147" id="DOJ-Q6-eyw"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dismiss">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="NeN-lV-CwS" kind="unwind" identifier="dismissConfirmation" unwindAction="unwindToOrderListWithSegue:" id="fsU-lu-iqw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qWN-45-Lvv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1vm-mo-Thf" firstAttribute="leading" secondItem="qWN-45-Lvv" secondAttribute="leading" constant="122" id="2cU-Ra-ABK"/>
+                            <constraint firstItem="qWN-45-Lvv" firstAttribute="bottom" secondItem="1vm-mo-Thf" secondAttribute="bottom" constant="270" id="7eL-0a-3x5"/>
+                            <constraint firstItem="Pxl-lg-2uG" firstAttribute="leading" secondItem="qWN-45-Lvv" secondAttribute="leading" constant="45" id="Pho-V2-Gu9"/>
+                            <constraint firstItem="Pxl-lg-2uG" firstAttribute="top" secondItem="qWN-45-Lvv" secondAttribute="top" constant="195" id="h0g-dA-ZOp"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmationLabel" destination="Pxl-lg-2uG" id="htM-r1-G8T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PI6-Y9-WxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="NeN-lV-CwS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="218"/>
+            <point key="canvasLocation" x="1461.5384615384614" y="217.53554502369667"/>
         </scene>
         <!--Your Order-->
         <scene sceneID="URx-wB-B3D">
@@ -277,6 +324,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jHA-sE-vCP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0qq-a5-BdV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
