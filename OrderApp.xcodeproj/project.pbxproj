@@ -21,6 +21,8 @@
 		33186378282F1135006A1CE7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33186377282F1135006A1CE7 /* Order.swift */; };
 		3318637A282F12AA006A1CE7 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33186379282F12AA006A1CE7 /* MenuController.swift */; };
 		3318637C28317FC8006A1CE7 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318637B28317FC8006A1CE7 /* OrderConfirmationViewController.swift */; };
+		331863A228372841006A1CE7 /* MenuControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331863A128372841006A1CE7 /* MenuControllerError.swift */; };
+		331863A4283977B4006A1CE7 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331863A3283977B4006A1CE7 /* MenuItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		33186377282F1135006A1CE7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		33186379282F12AA006A1CE7 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		3318637B28317FC8006A1CE7 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
+		331863A128372841006A1CE7 /* MenuControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControllerError.swift; sourceTree = "<group>"; };
+		331863A3283977B4006A1CE7 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +79,7 @@
 				3318636A282DD8A6006A1CE7 /* Model */,
 				33186369282DD89F006A1CE7 /* View */,
 				33186368282DD88D006A1CE7 /* Controller */,
-				33186367282DD87E006A1CE7 /* Service */,
+				33186367282DD87E006A1CE7 /* Services */,
 				33186353282DD819006A1CE7 /* AppDelegate.swift */,
 				33186355282DD819006A1CE7 /* SceneDelegate.swift */,
 				33186359282DD819006A1CE7 /* Main.storyboard */,
@@ -86,12 +90,12 @@
 			path = OrderApp;
 			sourceTree = "<group>";
 		};
-		33186367282DD87E006A1CE7 /* Service */ = {
+		33186367282DD87E006A1CE7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				33186379282F12AA006A1CE7 /* MenuController.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		33186368282DD88D006A1CE7 /* Controller */ = {
@@ -109,6 +113,7 @@
 		33186369282DD89F006A1CE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				331863A3283977B4006A1CE7 /* MenuItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 				33186373282EF188006A1CE7 /* MenuItem.swift */,
 				33186375282F1046006A1CE7 /* ResponseModels.swift */,
 				33186377282F1135006A1CE7 /* Order.swift */,
+				331863A128372841006A1CE7 /* MenuControllerError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +207,8 @@
 				33186378282F1135006A1CE7 /* Order.swift in Sources */,
 				33186372282EEF09006A1CE7 /* MenuItemDetailViewController.swift in Sources */,
 				33186370282EEB81006A1CE7 /* OrderTableViewController.swift in Sources */,
+				331863A4283977B4006A1CE7 /* MenuItemCell.swift in Sources */,
+				331863A228372841006A1CE7 /* MenuControllerError.swift in Sources */,
 				33186354282DD819006A1CE7 /* AppDelegate.swift in Sources */,
 				33186356282DD819006A1CE7 /* SceneDelegate.swift in Sources */,
 				3318637C28317FC8006A1CE7 /* OrderConfirmationViewController.swift in Sources */,

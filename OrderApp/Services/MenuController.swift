@@ -1,22 +1,14 @@
-//
-//  MenuController.swift
-//  OrderApp
-//
-//  Created by Josue Cruz on 5/13/22.
-//
+
 
 import Foundation
-
-typealias MinutesToPrepare = Int
-
-enum MenuControllerError: Error, LocalizedError {
-    case categoriesNotFound
-    case menuItemsNotFound
-    case orderRequestFailed
-}
+import UIKit
 
 class MenuController {
     static let shared = MenuController()
+    
+    typealias MinutesToPrepare = Int
+    
+    let baseURL = URL(string: "http://localhost:8080/")!
     
     static let orderUpdateNotification = Notification.Name("MenuController.orderUpdate")
     
@@ -25,8 +17,6 @@ class MenuController {
             NotificationCenter.default.post(name: MenuController.orderUpdateNotification, object: nil)
         }
     }
-    
-    let baseURL = URL(string: "http://localhost:8080/")!
     
     // FETCH CATEGORIES
     func fetchCategories() async throws -> [String] {
@@ -43,7 +33,7 @@ class MenuController {
         return categoriesResponse.categories
     }
     
-    // FETCH MENUI TEMS
+    // FETCH MENU TEMS
     func fetchMenuItems(forCategory categoryName: String) async throws -> [MenuItem] {
         let baseMenuURL = baseURL.appendingPathComponent("menu")
         var components = URLComponents(url: baseMenuURL, resolvingAgainstBaseURL: true)!
@@ -59,6 +49,21 @@ class MenuController {
         let menuResponse = try decoder.decode(MenuResponse.self, from: data)
         
         return menuResponse.items
+    }
+    
+    // FETCH IMAGES
+    func fetchImage(from url: URL) async throws -> UIImage {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw MenuControllerError.imageDataMissing
+        }
+        
+        guard let image = UIImage(data: data) else {
+            throw MenuControllerError.imageDataMissing
+        }
+        
+        return image
     }
     
     // SUBMIT ORDER

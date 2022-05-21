@@ -1,9 +1,6 @@
-//
-//  ResponseModels.swift
-//  OrderApp
-//
-//  Created by Josue Cruz on 5/13/22.
-//
+
+
+
 
 import Foundation
 
@@ -13,7 +10,6 @@ struct CategoriesResponse: Codable {
 
 struct MenuResponse: Codable {
     let items: [MenuItem]
-    
 }
 
 struct OrderResponse: Codable {

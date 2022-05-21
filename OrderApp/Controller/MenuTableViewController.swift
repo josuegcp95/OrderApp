@@ -1,16 +1,13 @@
-//
-//  MenuTableViewController.swift
-//  OrderApp
-//
-//  Created by Josue Cruz on 5/13/22.
-//
+
+
+
 
 import UIKit
 
 class MenuTableViewController: UITableViewController {
-    
     let category: String
     var menuItems = [MenuItem]()
+    var imageLoadTasks: [IndexPath: Task<Void, Never>] = [:]
     
     init?(coder: NSCoder, category: String) {
         self.category = category
@@ -36,6 +33,12 @@ class MenuTableViewController: UITableViewController {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        imageLoadTasks.forEach { key, value in value.cancel() }
+    }
+    
     func updateUI(with menuItems: [MenuItem]) {
         self.menuItems = menuItems
         self.tableView.reloadData()
@@ -49,7 +52,6 @@ class MenuTableViewController: UITableViewController {
         self.present(alert, animated: true)
     }
     
-    // SHOW MENU ITEMS
     @IBSegueAction func showMenuItem(_ coder: NSCoder, sender: Any?) -> MenuItemDetailViewController? {
         guard let cell = sender as? UITableViewCell, let indexpath = tableView.indexPath(for: cell) else {
             return nil }
@@ -58,7 +60,6 @@ class MenuTableViewController: UITableViewController {
         return MenuItemDetailViewController(coder: coder, menuItem: menuItem)
     }
     
-    // TABLE VIEW METHODS
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -69,15 +70,30 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItem", for: indexPath)
-        configureCell(cell, forCategoryAt: indexPath)
+        configureCell(cell, forItemAt: indexPath)
         return cell
     }
     
-    func configureCell(_ cell: UITableViewCell, forCategoryAt indexPath: IndexPath) {
-        let menuItem = menuItems[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = menuItem.name
-        content.secondaryText = menuItem.price.formatted(.currency(code: "usd"))
-        cell.contentConfiguration = content
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        imageLoadTasks[indexPath]?.cancel()
+    }
+    
+    func configureCell(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? MenuItemCell else { return }
+
+         let menuItem = menuItems[indexPath.row]
+
+         cell.itemName = menuItem.name
+         cell.price = menuItem.price
+         cell.image = nil
+
+         imageLoadTasks[indexPath] = Task.init {
+             if let image = try? await MenuController.shared.fetchImage(from: menuItem.imageURL) {
+                 if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath == indexPath {
+                     cell.image = image
+                 }
+             }
+             imageLoadTasks[indexPath] = nil
+         }
     }
 }

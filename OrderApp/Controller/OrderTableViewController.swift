@@ -1,14 +1,8 @@
-//
-//  OrderTableViewController.swift
-//  OrderApp
-//
-//  Created by Josue Cruz on 5/13/22.
-//
+
 
 import UIKit
 
 class OrderTableViewController: UITableViewController {
-    
     var minutesToPrepareOrder = 0
 
     override func viewDidLoad() {
@@ -17,7 +11,6 @@ class OrderTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: MenuController.orderUpdateNotification, object: nil)
     }
     
-    // SUBMIT ORDER
     @IBAction func submitTapped(_ sender: Any) {
         let orderTotal = MenuController.shared.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
             return result + menuItem.price
@@ -36,7 +29,6 @@ class OrderTableViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    // UPLOAD ORDER
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map {$0.id}
         Task.init {
@@ -50,7 +42,6 @@ class OrderTableViewController: UITableViewController {
         }
     }
     
-    // DISPLAY ERROR
     func displayError(_ error: Error, title: String) {
         guard let _ = viewIfLoaded?.window else { return }
         let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
@@ -58,19 +49,16 @@ class OrderTableViewController: UITableViewController {
         self.present(alert, animated: true)
     }
     
-    // UNWIND SEGUE
     @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
         if segue.identifier == "dismissConfirmation" {
             MenuController.shared.order.menuItems.removeAll()
         }
 }
     
-    // CONFIRM ORDER
     @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderConfirmationViewController? {
         return OrderConfirmationViewController(coder: coder, minutesToPrepare: minutesToPrepareOrder)
     }
     
-    // TABLE VIEW METHODS
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -100,10 +88,20 @@ class OrderTableViewController: UITableViewController {
     }
     
     func configureCell(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? MenuItemCell else { return }
+        
         let menuItem = MenuController.shared.order.menuItems[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = menuItem.name
-        content.secondaryText = menuItem.price.formatted(.currency(code: "usd"))
-        cell.contentConfiguration = content
+        
+        cell.itemName = menuItem.name
+        cell.price = menuItem.price
+        cell.image = nil
+        
+        Task.init {
+            if let image = try? await MenuController.shared.fetchImage(from: menuItem.imageURL) {
+                if let currentIndexPath = self.tableView.indexPath(for: cell), currentIndexPath == indexPath {
+                    cell.image = image
+                }
+            }
+        }
     }
 }

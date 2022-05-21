@@ -1,14 +1,10 @@
-//
-//  CategoryTableViewController.swift
-//  OrderApp
-//
-//  Created by Josue Cruz on 5/13/22.
-//
+
+
+
 
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
-    
     var categories = [String]()
 
     override func viewDidLoad() {
@@ -37,7 +33,6 @@ class CategoryTableViewController: UITableViewController {
         self.present(alert, animated: true)
     }
     
-    // SHOW MENU
     @IBSegueAction func showMenu(_ coder: NSCoder, sender: Any?) -> MenuTableViewController? {
         guard let cell = sender as? UITableViewCell, let indexpath = tableView.indexPath(for: cell) else {
             return nil }
@@ -46,7 +41,6 @@ class CategoryTableViewController: UITableViewController {
         return MenuTableViewController(coder: coder, category: category)
     }
     
-    // TABLE VIEW METHODS
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

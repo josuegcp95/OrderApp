@@ -1,14 +1,8 @@
-//
-//  MenuItemDetailViewController.swift
-//  OrderApp
-//
-//  Created by Josue Cruz on 5/13/22.
-//
+
 
 import UIKit
 
 class MenuItemDetailViewController: UIViewController {
-    
     var menuItem: MenuItem
     
     @IBOutlet weak var imageView: UIImageView!
@@ -36,11 +30,18 @@ class MenuItemDetailViewController: UIViewController {
             self.addToOrderButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
             self.addToOrderButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)}, completion: nil)
         MenuController.shared.order.menuItems.append(menuItem)
+        print (menuItem.detailText)
     }
 
     func updateUI() {
         nameLabel.text = menuItem.name
         priceLabel.text = menuItem.price.formatted(.currency(code: "usd"))
         detailTextLabel.text = menuItem.detailText
+        
+        Task.init {
+            if let image = try? await MenuController.shared.fetchImage(from: menuItem.imageURL) {
+                imageView.image = image
+            }
+        }
     }
 }
