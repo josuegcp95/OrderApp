@@ -122,8 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				33186373282EF188006A1CE7 /* MenuItem.swift */,
-				33186375282F1046006A1CE7 /* ResponseModels.swift */,
 				33186377282F1135006A1CE7 /* Order.swift */,
+				33186375282F1046006A1CE7 /* ResponseModels.swift */,
 				331863A128372841006A1CE7 /* MenuControllerError.swift */,
 			);
 			path = Model;

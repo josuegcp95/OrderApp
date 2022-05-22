@@ -12,6 +12,8 @@ class OrderTableViewController: UITableViewController {
     }
     
     @IBAction func submitTapped(_ sender: Any) {
+        if MenuController.shared.order.menuItems.isEmpty == false {
+            
         let orderTotal = MenuController.shared.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
             return result + menuItem.price
         }
@@ -23,11 +25,16 @@ class OrderTableViewController: UITableViewController {
             self.uploadOrder()
         }))
     
-        alertController.addAction(UIAlertAction(title: "Cancel",
-           style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
         present(alertController, animated: true, completion: nil)
-    }
+            
+        } else {
+            let alertController = UIAlertController(title: "Cart is Empty", message: "Press OK to Continue", preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+}
     
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map {$0.id}
