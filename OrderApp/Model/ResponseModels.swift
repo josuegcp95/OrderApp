@@ -1,7 +1,5 @@
 
 
-
-
 import Foundation
 
 struct CategoriesResponse: Codable {

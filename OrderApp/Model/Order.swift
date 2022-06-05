@@ -1,7 +1,5 @@
 
 
-
-
 import Foundation
 
 struct Order: Codable {
