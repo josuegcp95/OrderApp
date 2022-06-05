@@ -17,12 +17,11 @@
 ---
 
 ## Description
-- This is a restaurant ordering application 
 - This is a restaurant ordering iOS application 
 - It has a cateregoty menu, item menu, and item detail screen 
 - It also has a current order and confirmation screen
 - UI with Storyboard
-- MVC design Pattern
+- MVC Design Pattern
 
 #### Frameworks:
 - Foundation
