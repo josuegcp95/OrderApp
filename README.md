@@ -17,7 +17,11 @@
 ---
 
 ## Description
+<<<<<<< HEAD
 - This is a restaurant ordering application 
+=======
+- This is a restaurant ordering iOS application 
+>>>>>>> 8bb139fc142295428c8109321c79cb7ed52a5d7d
 - It has a cateregoty menu, item menu, and item detail screen 
 - It also has a current order and confirmation screen
 - UI with Storyboard
