@@ -18,7 +18,7 @@ class MenuController {
         }
     }
     
-    // FETCH CATEGORIES
+    //MARK: - FetchCategories
     func fetchCategories() async throws -> [String] {
         let categoriesURL = baseURL.appendingPathComponent("categories")
         let (data, response) = try await URLSession.shared.data(from: categoriesURL)
@@ -33,7 +33,7 @@ class MenuController {
         return categoriesResponse.categories
     }
     
-    // FETCH MENU TEMS
+    //MARK: - FetchMenuItems
     func fetchMenuItems(forCategory categoryName: String) async throws -> [MenuItem] {
         let baseMenuURL = baseURL.appendingPathComponent("menu")
         var components = URLComponents(url: baseMenuURL, resolvingAgainstBaseURL: true)!
@@ -51,7 +51,7 @@ class MenuController {
         return menuResponse.items
     }
     
-    // FETCH IMAGES
+    //MARK: - FetchImages
     func fetchImage(from url: URL) async throws -> UIImage {
         let (data, response) = try await URLSession.shared.data(from: url)
         
@@ -66,7 +66,7 @@ class MenuController {
         return image
     }
     
-    // SUBMIT ORDER
+    //MARK: - SubmitOrder
     func submitOrder(forMenuIDs menuIDs: [Int]) async throws -> MinutesToPrepare {
         let orderURL = baseURL.appendingPathComponent("order")
         var request = URLRequest(url: orderURL)
