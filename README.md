@@ -12,7 +12,7 @@
 ### Table of Contents
 - [Description](#description)
 - [How To Use](#how-to-use)
-- [Author Info](#author-info)
+- [Developer Info](#developer-info)
 
 ---
 
@@ -39,7 +39,7 @@
 - Download the project and run it on your computer
 ---
 
-## Author Info
+## Developer Info
 - Twitter - [@josuegcp95](https://twitter.com/Josuegcp95)
 
 [Back To The Top](#OrderApp)
