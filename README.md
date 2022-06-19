@@ -9,13 +9,6 @@
 
 ---
 
-### Table of Contents
-- [Description](#description)
-- [How To Use](#how-to-use)
-- [Developer Info](#developer-info)
-
----
-
 ## Description
 - This is a restaurant ordering iOS application 
 - It has a cateregoty menu, item menu, and item detail screen 
@@ -27,20 +20,13 @@
 - Foundation
 - UIKit
 
-#### What I Learned:
+#### What I've Learned:
 - How to make network calls
 - How to convert JSON into Swift Models
 - How to work with table views, tab bar controllers, and navigation controllers
 - How to handle errors
 - How to show UI alerts 
+
 ---
 
-## How To Use
-- Download the project and run it on your computer
----
-
-## Developer Info
-- Twitter - [@josuegcp95](https://twitter.com/Josuegcp95)
-
-[Back To The Top](#OrderApp)
 
